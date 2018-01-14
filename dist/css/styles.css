@@ -1,0 +1,17 @@
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css");
+
+body {
+    background-color: #000;
+    color: #666;
+}
+
+#brand-img {
+    max-width: 340px;
+    height: auto;
+    margin-bottom: 2rem;
+}
+header {
+    /* display: flex; */
+    text-align: center;
+    margin-top: 9rem;
+}
