@@ -1,0 +1,1 @@
+{"dependencies":[],"generated":{"js":"\"use strict\";\nObject.defineProperty(exports, \"__esModule\", { value: true });\nfunction calcRect(width, length) {\n    return width * length;\n}\nexports.calcRect = calcRect;\n//# sourceMappingURL=rectangle.js.map"},"hash":"cdc63a3240150042b97c017352433604"}

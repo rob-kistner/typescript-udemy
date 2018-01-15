@@ -1,0 +1,1 @@
+{"dependencies":[],"generated":{"js":"\"use strict\";\nObject.defineProperty(exports, \"__esModule\", { value: true });\nexports.PI = 3.14;\nfunction calcCirc(diameter) {\n    return diameter * exports.PI;\n}\nexports.calcCirc = calcCirc;\n//# sourceMappingURL=circle.js.map"},"hash":"2abbdeaf4ccf6b6b0781c0cb1e8cdde4"}

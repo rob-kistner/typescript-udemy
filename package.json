@@ -2,15 +2,14 @@
   "name": "typescript-playground",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "lite-server",
-    "webpack": "webpack --watch",
-    "servehot": "webpack-dev-server --inline --hot",
-    "serve": "webpack-dev-server"
+    "bundle": "parcel ./src/index.html -p 8000"
   },
   "author": "RobK",
   "license": "MIT",
-  "devDependencies": {}
+  "devDependencies": {
+    "parcel-bundler": "^1.4.1",
+    "typescript": "^2.6.2"
+  }
 }
