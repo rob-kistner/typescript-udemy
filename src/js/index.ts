@@ -1,11 +1,9 @@
 
-import {sepline} from './utils';
-import {PI, calcCirc} from './circle';
-import {calcRect} from './rectangle';
+import * as Utils from './lib/utils';
+import * as Circle from './lib/circle';
+import * as Rect from './lib/rectangle';
 
+Rect.showCalcRect(24, 28);
+Circle.showCalcCirc(102);
 
-console.log(PI);
-console.log(calcCirc(12));
-console.log(calcRect(1.5,5));
-
-sepline();
+Utils.sepline();

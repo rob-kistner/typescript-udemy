@@ -69,50 +69,70 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({9:[function(require,module,exports) {
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-function sepline() {
-    console.log(Array(25).join("- "));
+})({8:[function(require,module,exports) {
+var bundleURL = null;
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
 }
-exports.sepline = sepline;
-//# sourceMappingURL=utils.js.map
-},{}],10:[function(require,module,exports) {
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var PI = 3.14;
-function calcCirc(diameter) {
-    return (diameter * PI).toFixed(2);
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error;
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
 }
-exports.calcCirc = calcCirc;
-function showCalcCirc(diameter) {
-    console.log("calcCirc result: " + calcCirc(diameter));
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
 }
-exports.showCalcCirc = showCalcCirc;
-//# sourceMappingURL=circle.js.map
-},{}],11:[function(require,module,exports) {
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-function calcRect(w, l) {
-    return w * l;
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+
+},{}],4:[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+  newLink.onload = function () {
+    link.remove();
+  };
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
 }
-exports.calcRect = calcRect;
-function showCalcRect(w, l) {
-    console.log("calcRect result: " + calcRect(w, l));
+
+var cssTimeout = null;
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
 }
-exports.showCalcRect = showCalcRect;
-//# sourceMappingURL=rectangle.js.map
-},{}],3:[function(require,module,exports) {
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var Utils = require("./lib/utils");
-var Circle = require("./lib/circle");
-var Rect = require("./lib/rectangle");
-Rect.showCalcRect(24, 28);
-Circle.showCalcCirc(102);
-Utils.sepline();
-//# sourceMappingURL=index.js.map
-},{"./lib/utils":9,"./lib/circle":10,"./lib/rectangle":11}],0:[function(require,module,exports) {
+
+module.exports = reloadCSS;
+
+},{"./bundle-url":8}],0:[function(require,module,exports) {
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
 function Module() {
@@ -231,4 +251,4 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id)
   });
 }
-},{}]},{},[0,3])
+},{}]},{},[0])

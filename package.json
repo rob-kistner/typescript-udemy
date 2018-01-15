@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "bundle": "parcel ./src/index.html -p 8000"
+    "bundle": "parcel ./src/index.html -p 8000",
+    "clean": "del-cli ./dist/*.*"
   },
   "author": "RobK",
   "license": "MIT",
   "devDependencies": {
+    "del-cli": "^1.1.0",
     "parcel-bundler": "^1.4.1",
     "typescript": "^2.6.2"
   }
