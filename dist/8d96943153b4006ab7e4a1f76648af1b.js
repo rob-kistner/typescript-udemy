@@ -69,46 +69,21 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({10:[function(require,module,exports) {
+})({3:[function(require,module,exports) {
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-function sepline() {
-    console.log(Array(25).join("- "));
-}
-exports.sepline = sepline;
-//# sourceMappingURL=utils.js.map
-},{}],6:[function(require,module,exports) {
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var PI = 3.14;
-exports.PI = PI;
-var calcCirc = function (diameter) { return (diameter * PI).toFixed(2); };
-exports.calcCirc = calcCirc;
-var showCalcCirc = function (diameter) {
-    console.log("calcCirc result: " + calcCirc(diameter));
+var myDoubleFunc;
+myDoubleFunc = function (num1, num2) { return (num1 + num2) * 2; };
+console.log(myDoubleFunc(10, 20));
+var oldPerson = {
+    age: 27,
+    firstName: "Max",
+    greet: function (lastName) {
+        console.log("Hey, enough already");
+    }
 };
-exports.showCalcCirc = showCalcCirc;
-//# sourceMappingURL=circle.js.map
-},{}],9:[function(require,module,exports) {
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-function calcRect(w, l) {
-    return w * l;
-}
-exports.default = calcRect;
-//# sourceMappingURL=rectangle.js.map
-},{}],3:[function(require,module,exports) {
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var utils_1 = require("./lib/utils");
-var Circle = require("./shapes/circle");
-var rectangle_1 = require("./shapes/rectangle");
-console.log(Circle.PI);
-console.log(rectangle_1.default(10, 6.5));
-Circle.showCalcCirc(3);
-utils_1.sepline();
+console.log(oldPerson);
 //# sourceMappingURL=index.js.map
-},{"./lib/utils":10,"./shapes/circle":6,"./shapes/rectangle":9}],0:[function(require,module,exports) {
+},{}],0:[function(require,module,exports) {
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
 function Module() {
@@ -126,7 +101,7 @@ function Module() {
 module.bundle.Module = Module;
 
 if (!module.bundle.parent && typeof WebSocket !== 'undefined') {
-  var ws = new WebSocket('ws://' + window.location.hostname + ':65485/');
+  var ws = new WebSocket('ws://' + window.location.hostname + ':49319/');
   ws.onmessage = function(event) {
     var data = JSON.parse(event.data);
 

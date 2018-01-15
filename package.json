@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "bundle": "parcel ./src/index.html -p 8000",
+    "dev": "parcel ./src/index.html -p 8000",
     "clean": "del-cli ./dist/*.*"
   },
   "author": "RobK",
