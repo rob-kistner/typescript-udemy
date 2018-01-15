@@ -69,7 +69,7 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({9:[function(require,module,exports) {
+})({10:[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function sepline() {
@@ -77,42 +77,38 @@ function sepline() {
 }
 exports.sepline = sepline;
 //# sourceMappingURL=utils.js.map
-},{}],10:[function(require,module,exports) {
+},{}],6:[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var PI = 3.14;
-function calcCirc(diameter) {
-    return (diameter * PI).toFixed(2);
-}
+exports.PI = PI;
+var calcCirc = function (diameter) { return (diameter * PI).toFixed(2); };
 exports.calcCirc = calcCirc;
-function showCalcCirc(diameter) {
+var showCalcCirc = function (diameter) {
     console.log("calcCirc result: " + calcCirc(diameter));
-}
+};
 exports.showCalcCirc = showCalcCirc;
 //# sourceMappingURL=circle.js.map
-},{}],11:[function(require,module,exports) {
+},{}],9:[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 function calcRect(w, l) {
     return w * l;
 }
-exports.calcRect = calcRect;
-function showCalcRect(w, l) {
-    console.log("calcRect result: " + calcRect(w, l));
-}
-exports.showCalcRect = showCalcRect;
+exports.default = calcRect;
 //# sourceMappingURL=rectangle.js.map
 },{}],3:[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Utils = require("./lib/utils");
-var Circle = require("./lib/circle");
-var Rect = require("./lib/rectangle");
-Rect.showCalcRect(24, 28);
-Circle.showCalcCirc(102);
-Utils.sepline();
+var utils_1 = require("./lib/utils");
+var Circle = require("./shapes/circle");
+var rectangle_1 = require("./shapes/rectangle");
+console.log(Circle.PI);
+console.log(rectangle_1.default(10, 6.5));
+Circle.showCalcCirc(3);
+utils_1.sepline();
 //# sourceMappingURL=index.js.map
-},{"./lib/utils":9,"./lib/circle":10,"./lib/rectangle":11}],0:[function(require,module,exports) {
+},{"./lib/utils":10,"./shapes/circle":6,"./shapes/rectangle":9}],0:[function(require,module,exports) {
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
 function Module() {
@@ -130,7 +126,7 @@ function Module() {
 module.bundle.Module = Module;
 
 if (!module.bundle.parent && typeof WebSocket !== 'undefined') {
-  var ws = new WebSocket('ws://' + window.location.hostname + ':58968/');
+  var ws = new WebSocket('ws://' + window.location.hostname + ':65485/');
   ws.onmessage = function(event) {
     var data = JSON.parse(event.data);
 

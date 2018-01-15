@@ -11,7 +11,10 @@ body {
     margin-bottom: 2rem;
 }
 header {
-    /* display: flex; */
+    width: 100vw;
+    position: absolute;
+    top: 50%;
+    left: 0%;
     text-align: center;
-    margin-top: 9rem;
+    transform: translate(0%, -50%);
 }
