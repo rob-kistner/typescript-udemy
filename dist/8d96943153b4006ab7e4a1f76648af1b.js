@@ -71,17 +71,32 @@ require = (function (modules, cache, entry) {
   return newRequire;
 })({3:[function(require,module,exports) {
 "use strict";
-var myDoubleFunc;
-myDoubleFunc = function (num1, num2) { return (num1 + num2) * 2; };
-console.log(myDoubleFunc(10, 20));
-var oldPerson = {
-    age: 27,
-    firstName: "Max",
-    greet: function (lastName) {
-        console.log("Hey, enough already");
-    }
-};
-console.log(oldPerson);
+// Simple Generic
+//
+/*
+function echo(data:any) {
+    return data;
+}
+
+console.log(echo("RobK"));
+console.log(echo(27));
+console.log(echo({name: "Max", age: 27}));
+*/
+// Better Generic
+//
+// The "<T>" construct enforces the data type to the function
+//
+function betterEcho(data) {
+    return data;
+}
+console.log(betterEcho("RobK").length);
+console.log(betterEcho(27));
+console.log(betterEcho({ name: "Max", age: 27 }));
+// Built-In Generics
+//
+var testResults = [1.94, 2.33];
+testResults.push(-1.99);
+console.log(testResults);
 //# sourceMappingURL=index.js.map
 },{}],0:[function(require,module,exports) {
 var global = (1, eval)('this');
@@ -101,7 +116,7 @@ function Module() {
 module.bundle.Module = Module;
 
 if (!module.bundle.parent && typeof WebSocket !== 'undefined') {
-  var ws = new WebSocket('ws://' + window.location.hostname + ':49319/');
+  var ws = new WebSocket('ws://' + window.location.hostname + ':50041/');
   ws.onmessage = function(event) {
     var data = JSON.parse(event.data);
 
