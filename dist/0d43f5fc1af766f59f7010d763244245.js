@@ -69,76 +69,46 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({6:[function(require,module,exports) {
+})({7:[function(require,module,exports) {
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-function sep(title, fillchar, fillamt) {
-    if (title === void 0) { title = ""; }
-    if (fillchar === void 0) { fillchar = "- "; }
-    if (fillamt === void 0) { fillamt = 25; }
-    var s = "\n";
-    s += Array(3).join(fillchar);
-    s += title + " ";
-    s += Array(fillamt).join(fillchar);
-    s += "\n\n";
-    console.log(s);
-}
-exports.sep = sep;
-//# sourceMappingURL=utils.js.map
-},{}],3:[function(require,module,exports) {
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var utils_1 = require("./utils/utils");
-// Simple Generic
-//
-function echo(data) {
-    return data;
-}
-console.log(echo("RobK"));
-console.log(echo(27));
-console.log(echo({ name: "Max", age: 27 }));
-// Better Generic
-//
-// The "<T>" construct enforces the data type to the function
-//
-function betterEcho(data) {
-    return data;
-}
-console.log(betterEcho("RobK").length);
-console.log(betterEcho(27));
-console.log(betterEcho({ name: "Max", age: 27 }));
-utils_1.sep();
-// Built-In Generics
-//
-var testResults = [1.94, 2.33];
-testResults.push(-1.99);
-console.log("Test results are..." + testResults);
-function printAll(args) {
-    args.forEach(function (element) { return console.log(element); });
-}
-printAll(['Apple', 'Banana']);
-var echo2 = betterEcho;
-console.log(echo2("Something"));
-utils_1.sep("Generic Classes");
-// Generic Classes
-//
-var SimpleMath = /** @class */ (function () {
-    function SimpleMath() {
+var MyMap = /** @class */ (function () {
+    function MyMap() {
+        this.map = {};
     }
-    SimpleMath.prototype.calculate = function () {
-        return +this.baseValue * +this.multiplyValue;
+    MyMap.prototype.setItem = function (key, item) {
+        this.map[key] = item;
     };
-    return SimpleMath;
+    MyMap.prototype.getItem = function (key) {
+        return this.map[key];
+    };
+    MyMap.prototype.clear = function () {
+        this.map = {};
+    };
+    MyMap.prototype.printMap = function () {
+        for (var key in this.map) {
+            console.log(key, this.map[key]);
+        }
+    };
+    return MyMap;
 }());
-// casts vars within generic class to numbers with +
-// sign in front of numbers within calculate function
-//
-var simpleMath = new SimpleMath();
-simpleMath.baseValue = "15";
-simpleMath.multiplyValue = 20;
-console.log(simpleMath.calculate());
-//# sourceMappingURL=index.js.map
-},{"./utils/utils":6}],0:[function(require,module,exports) {
+console.log("--- numberMap ---");
+var numberMap = new MyMap();
+numberMap.setItem("apples", 10);
+numberMap.setItem("bananas", 2);
+console.log(numberMap.getItem("apples"));
+numberMap.printMap();
+numberMap.clear();
+numberMap.printMap();
+console.log("--- stringMap ---");
+var stringMap = new MyMap();
+stringMap.setItem("apples", "10");
+stringMap.setItem("bananas", "2");
+console.log(stringMap.getItem("apples"));
+stringMap.printMap();
+stringMap.clear();
+stringMap.printMap();
+//# sourceMappingURL=exercise-8-100.js.map
+},{}],0:[function(require,module,exports) {
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
 function Module() {
@@ -257,4 +227,4 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.require, id)
   });
 }
-},{}]},{},[0,3])
+},{}]},{},[0,7])
