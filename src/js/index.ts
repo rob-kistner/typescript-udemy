@@ -1,67 +1,79 @@
-import {sep} from './utils/utils';
-
-// Simple Generic
+// Decorator
 //
-
-
-function echo(data:any) {
-    return data;
+function logged(constructorFn: Function) {
+    console.log(constructorFn);
 }
 
-console.log(echo("RobK"));
-console.log(echo(27));
-console.log(echo({name: "Max", age: 27}));
-
-// Better Generic
+// add the above decorator function on
+// a line above the class to decorate
 //
-// The "<T>" construct enforces the data type to the function
-//
-function betterEcho<T>(data: T) {
-    return data;
-}
-
-console.log(betterEcho("RobK").length);
-console.log(betterEcho<number>(27));
-console.log(betterEcho({ name: "Max", age: 27 }));
-
-sep();
-
-// Built-In Generics
-//
-
-const testResults: Array<number> = [ 1.94, 2.33 ];
-testResults.push(-1.99);
-console.log(`Test results are...${testResults}`);
-
-
-function printAll<T>(args: T[]) {
-    args.forEach((element) => console.log(element));
-}
-
-printAll<string>(['Apple', 'Banana']);
-
-const echo2: <T>(data: T) => T = betterEcho;
-
-console.log(echo2<string>("Something"));
-
-sep("Generic Classes");
-
-// Generic Classes
-//
-
-class SimpleMath<T extends number | string, U extends number | string>
+@logged
+class Person
 {
-    baseValue: T;
-    multiplyValue: U;
-    calculate(): number {
-        return +this.baseValue * +this.multiplyValue;
+    constructor() {
+        console.log("Hi!");
     }
 }
-// casts vars within generic class to numbers with +
-// sign in front of numbers within calculate function
-//
-const simpleMath = new SimpleMath<string, number>();
-simpleMath.baseValue = "15";
-simpleMath.multiplyValue = 20;
-console.log(simpleMath.calculate());
 
+// Factory
+
+/*
+function logging(val: boolean) {
+    return val ? logged : null;
+}
+*/
+
+
+function printable(constructorFn: Function) {
+    constructorFn.prototype.print = function() {
+        console.log(this);
+    }
+}
+
+@printable
+class Car
+{
+    make:string = "Mazda";
+    model:string = "Mazda 3";
+}
+
+@logged
+@printable
+class Plant
+{
+    name = "Green Plant";
+}
+
+const plant = new Plant();
+(<any>plant).print();
+
+const car = new Car();
+(<any>car).print();
+
+// Method Decorator
+//
+function editable(value: boolean):Function {
+    return function(target:any, propName:string, descriptor:PropertyDecorator) {
+        descriptor.writable = value;
+    }
+}
+
+class Project {
+    projectName:string;
+
+    constructor(name: string) {
+        this.projectName = name;
+    }
+
+    @editable(false)
+    calcBudget():void {
+        console.log(1000);
+    }
+}
+
+const project = new Project("Super Project");
+project.calcBudget();
+project.calcBudget = function() {
+    console.log(2000);
+}
+project.calcBudget();

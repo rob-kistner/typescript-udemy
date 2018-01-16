@@ -5,12 +5,14 @@
   "main": "index.html",
   "scripts": {
     "dev": "parcel ./src/index.html -p 8000",
-    "clean": "del-cli ./dist/*.*"
+    "clean": "del-cli ./dist/*.*",
+    "serve": "lite-server"
   },
   "author": "RobK",
   "license": "MIT",
   "devDependencies": {
     "del-cli": "^1.1.0",
+    "lite-server": "^2.3.0",
     "parcel-bundler": "^1.4.1",
     "typescript": "^2.6.2"
   }
