@@ -1,1 +1,0 @@
-{"dependencies":[],"generated":{"js":"\"use strict\";Object.defineProperty(exports,\"__esModule\",{value:!0}),exports.PI=3.14;function e(e){return e*exports.PI}exports.calcCirc=e;"},"hash":"488a0ec2dca4a98b5065ece0ca4c3618"}

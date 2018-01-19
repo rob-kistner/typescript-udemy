@@ -1,1 +1,0 @@
-{"dependencies":[],"generated":{"js":"\"use strict\";\nObject.defineProperty(exports, \"__esModule\", { value: true });\nfunction sepline() {\n    console.log(Array(25).join(\"- \"));\n}\nexports.sepline = sepline;\n//# sourceMappingURL=utils.js.map"},"hash":"507b084cba5b47e8953045c255cb6417"}

@@ -1,1 +1,0 @@
-{"dependencies":[],"generated":{"js":"\"use strict\";\nvar PI = 3.14;\nfunction calcCirc(diameter) {\n    return diameter * PI;\n}\nmodule.exports = Circle;\n//# sourceMappingURL=Circle.js.map"},"hash":"0343b67e6a0775736c303ca2c6ff0e29"}
