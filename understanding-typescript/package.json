@@ -1,16 +1,12 @@
 {
   "name": "typescript-complete",
   "version": "1.0.0",
-  "description": "Complete TypeScript Course",
+  "description": "Compiling Typescript using TSC, requires SystemJS, uses @types/jquery",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "lite-server"
   },
-  "keywords": [
-    "typescript",
-    "course"
-  ],
   "author": "Maximilian Schwarzmueller",
   "license": "MIT",
   "devDependencies": {
