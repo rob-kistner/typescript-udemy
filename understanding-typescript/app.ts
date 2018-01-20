@@ -1,7 +1,7 @@
-import "jQuery";
+import $ = require('jquery');
 
 const myStyles = {
-    backgroundColor: "#f00",
+    backgroundColor: "#a0f",
     color: "#fff",
     padding: "1rem"
 };
