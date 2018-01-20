@@ -1,24 +1,23 @@
 {
-  "name": "typescript-complete",
+  "name": "understanding-typescript",
   "version": "1.0.0",
-  "description": "Compiling Typescript using TSC, requires SystemJS, uses @types/jquery",
-  "main": "app.js",
-  "scripts": {
-    "start": "lite-server",
-    "build": "webpack -d --watch",
-    "build:prod": "webpack -p"
-  },
-  "author": "Maximilian Schwarzmueller",
+  "main": "index.js",
+  "author": "RobK",
   "license": "MIT",
+  "scripts": {
+    "build": "webpack --watch",
+    "start": "lite-server"
+  },
   "devDependencies": {
-    "@types/jquery": "^3.2.18",
-    "lite-server": "^2.2.2",
-    "ts-loader": "^3.2.0",
+    "@types/react": "^16.0.34",
+    "@types/react-dom": "^16.0.3",
+    "lite-server": "^2.3.0",
+    "ts-loader": "^0.8.2",
     "typescript": "^2.6.2",
-    "webpack": "^3.10.0"
+    "webpack": "^1.13.2"
   },
   "dependencies": {
-    "jquery": "^3.1.0",
-    "systemjs": "^0.19.36"
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1"
   }
 }
