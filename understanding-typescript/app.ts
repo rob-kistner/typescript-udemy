@@ -1,7 +1,7 @@
 import "jQuery";
 
 const myStyles = {
-    backgroundColor: "#888",
+    backgroundColor: "#f00",
     color: "#fff",
     padding: "1rem"
 };
